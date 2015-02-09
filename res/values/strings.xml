@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GrouponClone</string>
+    <string name="title_section1">NEARBY</string>
+    <string name="title_section2">FEATURED</string>
+    <string name="title_section3">GOODS</string>
+    <string name="title_section4">THE BEST OF THE BEST</string>
+    <string name="title_section5">VALENTINES DAY</string>
+    <string name="title_section6">HOTELS</string>
+    <string name="title_section7">GETAWAYS</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
