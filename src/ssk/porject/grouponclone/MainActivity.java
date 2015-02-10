@@ -2,6 +2,8 @@ package ssk.porject.grouponclone;
 
 import java.util.Locale;
 
+import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.Ruby_on_Rails_JSON_Parser_Fragment;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -131,6 +133,9 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 			// below).
 			if (position == 1) {
 				return FragmentLoaderListView.newInstance();
+			}
+			if (position == 2) {
+				return Ruby_on_Rails_JSON_Parser_Fragment.newInstance();
 			}
 			return PlaceholderFragment.newInstance(position + 1);
 		}
