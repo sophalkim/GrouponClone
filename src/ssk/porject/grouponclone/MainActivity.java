@@ -3,6 +3,7 @@ package ssk.porject.grouponclone;
 import java.util.Locale;
 
 import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.Ruby_on_Rails_JSON_Parser_Fragment;
+import ssk.project.studiodemo.fragmentWebImages.WebImagesFragment;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -136,6 +137,9 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 			}
 			if (position == 2) {
 				return Ruby_on_Rails_JSON_Parser_Fragment.newInstance();
+			}
+			if (position == 3) {
+				return WebImagesFragment.newInstance();
 			}
 			return PlaceholderFragment.newInstance(position + 1);
 		}
