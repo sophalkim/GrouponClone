@@ -2,6 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ssk.porject.grouponclone.MainActivity" >
 
+    <item android:id="@+id/search"
+          android:title="@string/search_title"
+          android:icon="@drawable/icon_search"
+          android:showAsAction="collapseActionView|ifRoom"
+          android:actionViewClass="android.widget.SearchView" />
+    
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

@@ -57,12 +57,12 @@ public class FragmentLoaderListView extends ListFragment
 	
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		MenuItem item = menu.add("Search");
-		item.setIcon(android.R.drawable.ic_menu_search);
-		item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-		SearchView sv = new SearchView(getActivity());
-		sv.setOnQueryTextListener(this);
-		item.setActionView(sv);
+//		MenuItem item = menu.add("Search");
+//		item.setIcon(android.R.drawable.ic_menu_search);
+//		item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+//		SearchView sv = new SearchView(getActivity());
+//		sv.setOnQueryTextListener(this);
+//		item.setActionView(sv);
 	}
 
 	@Override
