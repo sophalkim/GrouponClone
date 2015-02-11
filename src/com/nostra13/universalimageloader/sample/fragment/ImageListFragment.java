@@ -84,7 +84,7 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 				.cacheInMemory(true)
 				.cacheOnDisk(true)
 				.considerExifParams(true)
-				.displayer(new RoundedBitmapDisplayer(20))
+//				.displayer(new RoundedBitmapDisplayer(20))
 				.build();
 	}
 
