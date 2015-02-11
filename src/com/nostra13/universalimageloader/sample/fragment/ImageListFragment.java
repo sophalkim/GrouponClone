@@ -15,14 +15,22 @@
  *******************************************************************************/
 package com.nostra13.universalimageloader.sample.fragment;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import ssk.porject.grouponclone.R;
+import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.Post;
+import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.RemoteData;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +60,7 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 	public static final int INDEX = 0;
 
 	String[] imageUrls = Constants.IMAGES;
+	List<String> list;
 	Random r = new Random();
 
 	DisplayImageOptions options;
@@ -88,6 +97,8 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 				.considerExifParams(true)
 //				.displayer(new RoundedBitmapDisplayer(20))
 				.build();
+		
+		new JsonLoader().execute("https://sophalkim.herokuapp.com/users.json");
 	}
 
 	@Override
@@ -154,11 +165,12 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 			} else {
 				holder = (ViewHolder) view.getTag();
 			}
-
-			holder.text.setText("Item " + (position + 1));
+			
+			if (list != null) {
+				holder.text.setText(list.get(r.nextInt(list.size())));
+			}
 			holder.button.setText("$" + r.nextInt(100) + ".95");
 			
-
 			ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], holder.image, options, animateFirstListener);
 
 			return view;
@@ -181,4 +193,32 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 			}
 		}
 	}
+	
+	private class JsonLoader extends AsyncTask<String, Void, List<String>> {
+
+		@Override
+		protected List<String> doInBackground(String... params) {
+			String raw=RemoteData.readContents(params[0]);
+			List<String> list=new ArrayList<String>();
+	        try {
+	            	JSONArray data = new JSONArray(raw);
+	            for (int i=0; i < data.length(); i++){
+	                JSONObject cur= data.getJSONObject(i);
+	                Post p=new Post();
+	                String name = "";
+	                name =cur.optString("name");
+	                list.add(name);
+	            }
+	        }catch(Exception e){
+	            Log.e("fetchPosts()",e.toString());
+	        }
+	        return list;
+		}
+		
+		@Override
+		protected void onPostExecute(List<String> results) {
+			list = results;
+		}
+    	
+    }
 }
