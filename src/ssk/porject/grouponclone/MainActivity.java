@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nostra13.universalimageloader.sample.activity.HomeActivity;
+import com.nostra13.universalimageloader.sample.fragment.ImageListFragment;
 
 public class MainActivity extends Activity implements ActionBar.TabListener {
 
@@ -145,7 +146,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 				return Ruby_on_Rails_JSON_Parser_Fragment.newInstance();
 			}
 			if (position == 3) {
-				return WebImagesFragment.newInstance();
+				return ImageListFragment.newInstance();
 			}
 			return PlaceholderFragment.newInstance(position + 1);
 		}

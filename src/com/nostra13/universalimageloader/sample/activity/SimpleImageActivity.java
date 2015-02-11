@@ -16,8 +16,8 @@
 package com.nostra13.universalimageloader.sample.activity;
 
 import ssk.porject.grouponclone.R;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 import com.nostra13.universalimageloader.sample.Constants;
@@ -42,7 +42,7 @@ public class SimpleImageActivity extends FragmentActivity {
 			default:
 			case ImageListFragment.INDEX:
 				tag = ImageListFragment.class.getSimpleName();
-				fr = getSupportFragmentManager().findFragmentByTag(tag);
+				fr = getFragmentManager().findFragmentByTag(tag);
 				if (fr == null) {
 					fr = new ImageListFragment();
 				}
@@ -50,7 +50,7 @@ public class SimpleImageActivity extends FragmentActivity {
 				break;
 			case ImageGridFragment.INDEX:
 				tag = ImageGridFragment.class.getSimpleName();
-				fr = getSupportFragmentManager().findFragmentByTag(tag);
+				fr = getFragmentManager().findFragmentByTag(tag);
 				if (fr == null) {
 					fr = new ImageGridFragment();
 				}
@@ -58,7 +58,7 @@ public class SimpleImageActivity extends FragmentActivity {
 				break;
 			case ImagePagerFragment.INDEX:
 				tag = ImagePagerFragment.class.getSimpleName();
-				fr = getSupportFragmentManager().findFragmentByTag(tag);
+				fr = getFragmentManager().findFragmentByTag(tag);
 				if (fr == null) {
 					fr = new ImagePagerFragment();
 					fr.setArguments(getIntent().getExtras());
@@ -67,7 +67,7 @@ public class SimpleImageActivity extends FragmentActivity {
 				break;
 			case ImageGalleryFragment.INDEX:
 				tag = ImageGalleryFragment.class.getSimpleName();
-				fr = getSupportFragmentManager().findFragmentByTag(tag);
+				fr = getFragmentManager().findFragmentByTag(tag);
 				if (fr == null) {
 					fr = new ImageGalleryFragment();
 				}
@@ -76,6 +76,6 @@ public class SimpleImageActivity extends FragmentActivity {
 		}
 
 		setTitle(titleRes);
-		getSupportFragmentManager().beginTransaction().replace(android.R.id.content, fr, tag).commit();
+		getFragmentManager().beginTransaction().replace(android.R.id.content, fr, tag).commit();
 	}
 }

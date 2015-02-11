@@ -32,8 +32,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -50,10 +53,29 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 	String[] imageUrls = Constants.IMAGES;
 
 	DisplayImageOptions options;
+	
+	/*
+	 * Adding to make it work with Groupon
+	 */
+	public static ImageListFragment newInstance() {
+		ImageListFragment ilf = new ImageListFragment();
+		return ilf;
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity())
+		.threadPriority(Thread.NORM_PRIORITY - 2)
+		.denyCacheImageMultipleSizesInMemory()
+		.diskCacheFileNameGenerator(new Md5FileNameGenerator())
+		.diskCacheSize(50 * 1024 * 1024) // 50 Mb
+		.tasksProcessingOrder(QueueProcessingType.LIFO)
+		.writeDebugLogs() // Remove for release app
+		.build();
+		// Initialize ImageLoader with configuration.
+		ImageLoader.getInstance().init(config);
 
 		options = new DisplayImageOptions.Builder()
 				.showImageOnLoading(R.drawable.ic_stub)

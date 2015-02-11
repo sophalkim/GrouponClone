@@ -16,11 +16,11 @@
 package com.nostra13.universalimageloader.sample.activity;
 
 import ssk.porject.grouponclone.R;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.nostra13.universalimageloader.sample.fragment.ImageGridFragment;
@@ -43,7 +43,7 @@ public class ComplexImageActivity extends FragmentActivity {
 		int pagerPosition = savedInstanceState == null ? 0 : savedInstanceState.getInt(STATE_POSITION);
 
 		pager = (ViewPager) findViewById(R.id.pager);
-		pager.setAdapter(new ImagePagerAdapter(getSupportFragmentManager()));
+		pager.setAdapter(new ImagePagerAdapter(getFragmentManager()));
 		pager.setCurrentItem(pagerPosition);
 	}
 
