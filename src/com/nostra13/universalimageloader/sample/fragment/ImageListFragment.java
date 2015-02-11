@@ -18,6 +18,7 @@ package com.nostra13.universalimageloader.sample.fragment;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import ssk.porject.grouponclone.R;
 import android.graphics.Bitmap;
@@ -38,7 +39,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.sample.Constants;
@@ -51,6 +51,7 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 	public static final int INDEX = 0;
 
 	String[] imageUrls = Constants.IMAGES;
+	Random r = new Random();
 
 	DisplayImageOptions options;
 	
@@ -152,8 +153,9 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 			}
 
 			holder.text.setText("Item " + (position + 1));
+			
 
-			ImageLoader.getInstance().displayImage(imageUrls[position], holder.image, options, animateFirstListener);
+			ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], holder.image, options, animateFirstListener);
 
 			return view;
 		}

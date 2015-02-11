@@ -136,19 +136,11 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
 		@Override
 		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a PlaceholderFragment (defined as a static inner class
-			// below).
-			if (position == 1) {
-				return FragmentLoaderListView.newInstance();
+			switch (position) {
+			case 1: return FragmentLoaderListView.newInstance();
+			case 2: return Ruby_on_Rails_JSON_Parser_Fragment.newInstance();
+			default: return ImageListFragment.newInstance();
 			}
-			if (position == 2) {
-				return Ruby_on_Rails_JSON_Parser_Fragment.newInstance();
-			}
-			if (position == 3) {
-				return ImageListFragment.newInstance();
-			}
-			return PlaceholderFragment.newInstance(position + 1);
 		}
 
 		@Override
