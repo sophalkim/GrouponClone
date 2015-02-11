@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -112,6 +113,7 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 	private static class ViewHolder {
 		TextView text;
 		ImageView image;
+		Button button;
 	}
 
 	class ImageAdapter extends BaseAdapter {
@@ -147,12 +149,14 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 				holder = new ViewHolder();
 				holder.text = (TextView) view.findViewById(R.id.text);
 				holder.image = (ImageView) view.findViewById(R.id.image);
+				holder.button = (Button) view.findViewById(R.id.button1);
 				view.setTag(holder);
 			} else {
 				holder = (ViewHolder) view.getTag();
 			}
 
 			holder.text.setText("Item " + (position + 1));
+			holder.button.setText("$" + r.nextInt(100) + ".95");
 			
 
 			ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], holder.image, options, animateFirstListener);

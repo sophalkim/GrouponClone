@@ -3,7 +3,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	android:paddingBottom="50dp">
+	android:paddingBottom="25dp">
 
 	<ImageView
 		android:id="@+id/image"
@@ -14,18 +14,29 @@
 		android:contentDescription="@string/descr_image"
 		android:scaleType="centerCrop" />
 
-	<TextView
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:paddingTop="25dp">
+	    
+	    <TextView
 		android:id="@+id/text"
-		android:layout_width="50dp"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_gravity="start|center_vertical"
-		android:layout_marginLeft="20dip"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="10dp"
 		android:textSize="22sp" />
 
-	<Button
+		<Button
 	    android:id="@+id/button1"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginRight="20dp"
+	    android:textColor="#1A4515"
 	    android:text="Button" />
+	    
+	</RelativeLayout>
+	
 
 </LinearLayout>
