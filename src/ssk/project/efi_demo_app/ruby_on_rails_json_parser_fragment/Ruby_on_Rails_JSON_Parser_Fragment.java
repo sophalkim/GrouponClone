@@ -128,14 +128,14 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
 //                TextView postScore;
 //                postScore=(TextView)convertView
 //                          .findViewById(R.id.post_score);
-                ImageView thumbs;
-                thumbs = (ImageView)convertView
-                		 .findViewById(R.id.image_view);
+//                ImageView thumbs;
+//                thumbs = (ImageView)convertView
+//                		 .findViewById(R.id.image_view);
  
                 postTitle.setText(posts.get(position).title);
 //                postDetails.setText(posts.get(position).getDetails());
 //                postScore.setText(posts.get(position).getScore());
-                thumbs.setImageBitmap(getBitmapFromURL(posts.get(position).thumbnail));
+//                thumbs.setImageBitmap(getBitmapFromURL(posts.get(position).thumbnail));
                 return convertView;
             }
         };
