@@ -25,8 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import ssk.porject.grouponclone.R;
-import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.Post;
 import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.RemoteData;
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -59,11 +59,13 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 
 	public static final int INDEX = 0;
 
+	ViewHolder holder;
 	String[] imageUrls = Constants.IMAGES;
 	List<String> list;
 	Random r = new Random();
 
 	DisplayImageOptions options;
+	ProgressDialog mProgressDialog;
 	
 	/*
 	 * Adding to make it work with Groupon
@@ -154,7 +156,6 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 		@Override
 		public View getView(final int position, View convertView, ViewGroup parent) {
 			View view = convertView;
-			final ViewHolder holder;
 			if (convertView == null) {
 				view = inflater.inflate(R.layout.item_list_image, parent, false);
 				holder = new ViewHolder();
@@ -194,8 +195,16 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 		}
 	}
 	
-	private class JsonLoader extends AsyncTask<String, Void, List<String>> {
+	private class JsonLoader extends AsyncTask<String, Integer, List<String>> {
 
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			mProgressDialog = new ProgressDialog(getActivity());
+			mProgressDialog.setMessage("loading");
+			mProgressDialog.show();
+		}
+		
 		@Override
 		protected List<String> doInBackground(String... params) {
 			String raw=RemoteData.readContents(params[0]);
@@ -204,7 +213,6 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 	            	JSONArray data = new JSONArray(raw);
 	            for (int i=0; i < data.length(); i++){
 	                JSONObject cur= data.getJSONObject(i);
-	                Post p=new Post();
 	                String name = "";
 	                name =cur.optString("name");
 	                list.add(name);
@@ -214,10 +222,15 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 	        }
 	        return list;
 		}
+
 		
 		@Override
 		protected void onPostExecute(List<String> results) {
 			list = results;
+			if (list != null && holder != null) {
+				holder.text.setText(list.get(r.nextInt(list.size())));
+			}
+			if (mProgressDialog != null) mProgressDialog.dismiss();
 		}
     	
     }

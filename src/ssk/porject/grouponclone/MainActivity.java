@@ -3,13 +3,11 @@ package ssk.porject.grouponclone;
 import java.util.Locale;
 
 import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.Ruby_on_Rails_JSON_Parser_Fragment;
-import ssk.project.studiodemo.fragmentWebImages.WebImagesFragment;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -19,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nostra13.universalimageloader.sample.activity.HomeActivity;
 import com.nostra13.universalimageloader.sample.fragment.ImageListFragment;
 
 public class MainActivity extends Activity implements ActionBar.TabListener {
