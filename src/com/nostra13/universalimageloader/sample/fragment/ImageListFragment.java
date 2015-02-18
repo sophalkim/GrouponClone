@@ -100,7 +100,7 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 //				.displayer(new RoundedBitmapDisplayer(20))
 				.build();
 		
-		new JsonLoader().execute("https://sophalkim.herokuapp.com/users.json");
+//		new JsonLoader().execute("https://sophalkim.herokuapp.com/users.json");
 	}
 
 	@Override
@@ -166,14 +166,15 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 			} else {
 				holder = (ViewHolder) view.getTag();
 			}
-			
-			if (list != null) {
-				holder.text.setText(list.get(r.nextInt(list.size())));
-			}
+			new JsonLoader().execute("https://sophalkim.herokuapp.com/users.json");
+//			if (list != null) {
+//				holder.text.setText(list.get(r.nextInt(list.size())));
+//			}
 			holder.button.setText("$" + r.nextInt(100) + ".95");
 			
 			ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], holder.image, options, animateFirstListener);
-
+			
+			
 			return view;
 		}
 	}
@@ -200,9 +201,9 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			mProgressDialog = new ProgressDialog(getActivity());
-			mProgressDialog.setMessage("loading");
-			mProgressDialog.show();
+			if (holder != null) {
+				holder.text.setText("loading");
+			}
 		}
 		
 		@Override
@@ -227,10 +228,10 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 		@Override
 		protected void onPostExecute(List<String> results) {
 			list = results;
-			if (list != null && holder != null) {
-				holder.text.setText(list.get(r.nextInt(list.size())));
+			if (results != null && holder != null) {
+				holder.text.setText(results.get(r.nextInt(results.size())));
 			}
-			if (mProgressDialog != null) mProgressDialog.dismiss();
+//			if (mProgressDialog != null) mProgressDialog.dismiss();
 		}
     	
     }
