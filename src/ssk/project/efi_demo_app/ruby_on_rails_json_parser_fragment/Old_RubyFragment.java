@@ -5,7 +5,6 @@ import java.util.List;
 
 import ssk.porject.grouponclone.R;
 import android.app.Fragment;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -15,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
+public class Old_RubyFragment extends Fragment {
 	ListView postsList;
     ArrayAdapter<Post> adapter;
     Handler handler;
@@ -24,13 +23,13 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
     List<Post> posts;
     PostsHolder postsHolder;
      
-    Ruby_on_Rails_JSON_Parser_Fragment(){
-//        handler=new Handler();
+    Old_RubyFragment(){
+        handler=new Handler();
         posts=new ArrayList<Post>();
     }    
      
     public static Fragment newInstance(){
-    	Ruby_on_Rails_JSON_Parser_Fragment rf = new Ruby_on_Rails_JSON_Parser_Fragment();
+    	Old_RubyFragment rf = new Old_RubyFragment();
     	rf.postsHolder = new PostsHolder(rf.subreddit);
     	return rf;
     }
@@ -43,50 +42,50 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
                                 , container
                                 , false);
         postsList=(ListView)v.findViewById(R.id.posts_list);
-        new getJSONTask().execute();
         return v;
     }
      
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
      
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {    
         super.onActivityCreated(savedInstanceState);
-//        initialize();
+        initialize();
     }
      
-//    private void initialize(){
-//        // This should run only once for the fragment as the
-//        // setRetainInstance(true) method has been called on
-//        // this fragment
-//         
-//        if(posts.size()==0){
-//             
-//            // Must execute network tasks outside the UI
-//            // thread. So create a new thread.
-//             
-//            new Thread(){
-//                public void run(){
-//                    posts.addAll(postsHolder.fetchPosts());
-//                     
-//                    // UI elements should be accessed only in
-//                    // the primary thread, so we must use the
-//                    // handler here.
-//                     
-//                    handler.post(new Runnable(){
-//                        public void run(){
-//                            createAdapter();
-//                        }
-//                    });
-//                }
-//            }.start();
-//        }else{
-//            createAdapter();
-//        }
-//    }
+    private void initialize(){
+        // This should run only once for the fragment as the
+        // setRetainInstance(true) method has been called on
+        // this fragment
+         
+        if(posts.size()==0){
+             
+            // Must execute network tasks outside the UI
+            // thread. So create a new thread.
+             
+            new Thread(){
+                public void run(){
+                    posts.addAll(postsHolder.fetchPosts());
+                     
+                    // UI elements should be accessed only in
+                    // the primary thread, so we must use the
+                    // handler here.
+                     
+                    handler.post(new Runnable(){
+                        public void run(){
+                            createAdapter();
+                        }
+                    });
+                }
+            }.start();
+        }else{
+            createAdapter();
+        }
+    }
      
     /**
      * This method creates the adapter from the list of posts
@@ -109,23 +108,6 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
             }
         };
         postsList.setAdapter(adapter);
-    }
-    
-    public class getJSONTask extends AsyncTask<String, Void, List<Post>> {
-    	
-		@Override
-		protected List<Post> doInBackground(String... params) {
-			if(posts.size()==0){
-				posts.addAll(postsHolder.fetchPosts());
-			}
-			return posts;
-		}
-		
-		@Override
-		protected void onPostExecute(List<Post> posts) {
-			createAdapter();
-		}
-    	
     }
     
 }
