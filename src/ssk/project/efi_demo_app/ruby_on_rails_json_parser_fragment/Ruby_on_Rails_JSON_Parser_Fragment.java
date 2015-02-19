@@ -21,15 +21,12 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
     Handler handler;
      
     String subreddit;
-    List<Post> posts;
-    PostsHolder postsHolder;
-     
-    Ruby_on_Rails_JSON_Parser_Fragment(){
-        posts=new ArrayList<Post>();
-    }    
+    static List<Post> posts;
+    PostsHolder postsHolder; 
      
     public static Fragment newInstance(){
     	Ruby_on_Rails_JSON_Parser_Fragment rf = new Ruby_on_Rails_JSON_Parser_Fragment();
+    	posts=new ArrayList<Post>();
     	rf.postsHolder = new PostsHolder(rf.subreddit);
     	return rf;
     }
