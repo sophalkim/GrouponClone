@@ -25,7 +25,6 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
     PostsHolder postsHolder;
      
     Ruby_on_Rails_JSON_Parser_Fragment(){
-//        handler=new Handler();
         posts=new ArrayList<Post>();
     }    
      
@@ -36,57 +35,12 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
     }
      
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.posts
-                                , container
-                                , false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v=inflater.inflate(R.layout.posts, container, false);
         postsList=(ListView)v.findViewById(R.id.posts_list);
         new getJSONTask().execute();
         return v;
     }
-     
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-     
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {    
-        super.onActivityCreated(savedInstanceState);
-//        initialize();
-    }
-     
-//    private void initialize(){
-//        // This should run only once for the fragment as the
-//        // setRetainInstance(true) method has been called on
-//        // this fragment
-//         
-//        if(posts.size()==0){
-//             
-//            // Must execute network tasks outside the UI
-//            // thread. So create a new thread.
-//             
-//            new Thread(){
-//                public void run(){
-//                    posts.addAll(postsHolder.fetchPosts());
-//                     
-//                    // UI elements should be accessed only in
-//                    // the primary thread, so we must use the
-//                    // handler here.
-//                     
-//                    handler.post(new Runnable(){
-//                        public void run(){
-//                            createAdapter();
-//                        }
-//                    });
-//                }
-//            }.start();
-//        }else{
-//            createAdapter();
-//        }
-//    }
      
     /**
      * This method creates the adapter from the list of posts
@@ -99,8 +53,7 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
             @Override
             public View getView(int position,View convertView, ViewGroup parent) {
             	if(convertView==null){
-                    convertView=getActivity().getLayoutInflater()
-                                .inflate(R.layout.post_item, parent, false);
+                    convertView=getActivity().getLayoutInflater().inflate(R.layout.post_item, parent, false);
                 }
                 TextView postTitle;
                 postTitle=(TextView)convertView.findViewById(R.id.post_title);
