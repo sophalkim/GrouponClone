@@ -20,20 +20,25 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
     String subreddit;
     PostsHolder postsHolder; 
     static List<Post> posts;
-     
+    
+    /** 
+     * Create a new instance of this Fragment. This fragment is a listview containing
+     * information from my ruby on rails website. 
+     * @return Ruby on Rails Fragment
+     */
     public static Fragment newInstance(){
     	Ruby_on_Rails_JSON_Parser_Fragment rf = new Ruby_on_Rails_JSON_Parser_Fragment();
-    	posts=new ArrayList<Post>();
+    	posts = new ArrayList<Post>();
     	rf.postsHolder = new PostsHolder(rf.subreddit);
     	return rf;
     }
      
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.posts, container, false);
-        postsList=(ListView)v.findViewById(R.id.posts_list);
+        View view = inflater.inflate(R.layout.posts, container, false);
+        postsList = (ListView) view.findViewById(R.id.posts_list);
         new getJSONTask().execute();
-        return v;
+        return view;
     }
      
     /**

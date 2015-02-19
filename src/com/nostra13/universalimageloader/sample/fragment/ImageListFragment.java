@@ -100,7 +100,6 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 //				.displayer(new RoundedBitmapDisplayer(20))
 				.build();
 		
-//		new JsonLoader().execute("https://sophalkim.herokuapp.com/users.json");
 	}
 
 	@Override
@@ -167,14 +166,8 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 				holder = (ViewHolder) view.getTag();
 			}
 			new JsonLoader().execute("https://sophalkim.herokuapp.com/users.json");
-//			if (list != null) {
-//				holder.text.setText(list.get(r.nextInt(list.size())));
-//			}
 			holder.button.setText("$" + r.nextInt(100) + ".95");
-			
 			ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], holder.image, options, animateFirstListener);
-			
-			
 			return view;
 		}
 	}
@@ -224,15 +217,12 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 	        return list;
 		}
 
-		
 		@Override
 		protected void onPostExecute(List<String> results) {
 			list = results;
 			if (results != null && holder != null) {
 				holder.text.setText(results.get(r.nextInt(results.size())));
 			}
-//			if (mProgressDialog != null) mProgressDialog.dismiss();
 		}
-    	
     }
 }
