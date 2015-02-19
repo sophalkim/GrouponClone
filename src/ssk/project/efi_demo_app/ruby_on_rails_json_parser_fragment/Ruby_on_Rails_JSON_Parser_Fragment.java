@@ -7,7 +7,6 @@ import ssk.porject.grouponclone.R;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +17,9 @@ import android.widget.TextView;
 public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
 	ListView postsList;
     ArrayAdapter<Post> adapter;
-    Handler handler;
-     
     String subreddit;
-    static List<Post> posts;
     PostsHolder postsHolder; 
+    static List<Post> posts;
      
     public static Fragment newInstance(){
     	Ruby_on_Rails_JSON_Parser_Fragment rf = new Ruby_on_Rails_JSON_Parser_Fragment();
