@@ -35,9 +35,9 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
     }    
      
     public static Fragment newInstance(){
-        PostsFragment pf=new PostsFragment();
-        pf.postsHolder=new PostsHolder(pf.subreddit);        
-        return pf;
+    	Ruby_on_Rails_JSON_Parser_Fragment rf = new Ruby_on_Rails_JSON_Parser_Fragment();
+    	rf.postsHolder = new PostsHolder(rf.subreddit);
+    	return rf;
     }
      
     @Override
@@ -98,22 +98,14 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
      * , and assigns it to the list.
      */
     private void createAdapter(){
-         
         // Make sure this fragment is still a part of the activity.
         if(getActivity()==null) return;
-         
-        adapter=new ArrayAdapter<Post>(getActivity()
-                                             ,R.layout.post_item
-                                             , posts){
+        adapter=new ArrayAdapter<Post>(getActivity() ,R.layout.post_item, posts){
             @Override
-            public View getView(int position,
-                                View convertView,
-                                ViewGroup parent) {
- 
-                if(convertView==null){
-                    convertView=getActivity()
-                                .getLayoutInflater()
-                                .inflate(R.layout.post_item, null);
+            public View getView(int position,View convertView, ViewGroup parent) {
+            	if(convertView==null){
+                    convertView=getActivity().getLayoutInflater()
+                                .inflate(R.layout.post_item, parent, false);
                 }
  
                 TextView postTitle;
