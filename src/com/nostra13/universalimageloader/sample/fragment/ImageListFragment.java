@@ -200,7 +200,9 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 				holder.text.setText("loading");
 			}
 			holder.button.setText("$" + r.nextInt(100) + ".95");
-			ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], holder.image, options, animateFirstListener);
+			if (holder.image.getDrawable() == null) {
+				ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], holder.image, options, animateFirstListener);
+			}
 			return view;
 		}
 	}
