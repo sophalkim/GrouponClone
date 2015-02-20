@@ -73,7 +73,6 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 	SwipeRefreshLayout swipeLayout;
 	ImageAdapter adapter;
 	
-	
 	// Variables for automatically loading more reddit posts when user reaches bottom of listview
     int currentItemIndex = 0;
     int totalItemCount = 0;

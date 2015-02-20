@@ -42,7 +42,7 @@ public abstract class AbsListViewBaseFragment extends BaseFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		applyScrollListener();
+//		applyScrollListener();
 	}
 
 	@Override
