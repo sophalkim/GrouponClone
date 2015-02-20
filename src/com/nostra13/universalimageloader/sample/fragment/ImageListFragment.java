@@ -211,7 +211,12 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 		protected void onPreExecute() {
 			super.onPreExecute();
 			if (holder != null) {
-				holder.text.setText("loading");
+				if (list != null) {
+					holder.text.setText(list.get(r.nextInt(list.size())));
+				} else {
+					holder.text.setText("loading");
+				}
+				
 			}
 		}
 		
