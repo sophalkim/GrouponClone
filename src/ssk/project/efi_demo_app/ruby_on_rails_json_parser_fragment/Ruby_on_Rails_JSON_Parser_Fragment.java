@@ -7,6 +7,8 @@ import ssk.porject.grouponclone.R;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
+public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+	SwipeRefreshLayout swipeLayout;
 	ListView postsList;
     ArrayAdapter<Post> adapter;
     String subreddit;
@@ -35,18 +38,23 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
      
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.posts, container, false);
-        postsList = (ListView) view.findViewById(R.id.posts_list);
+        View view = inflater.inflate(R.layout.swipe_refresh_layout, container, false);
+        setSwipeLayout(view);
+        postsList = (ListView) view.findViewById(R.id.listview1);
         new getJSONTask().execute();
         return view;
     }
-     
-    /**
-     * This method creates the adapter from the list of posts
-     * , and assigns it to the list.
-     */
+    
+    public void setSwipeLayout(View rootView) {
+    	swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+		swipeLayout.setOnRefreshListener(this);
+		swipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright, 
+	            android.R.color.holo_green_light, 
+	            android.R.color.holo_orange_light, 
+	            android.R.color.holo_red_light);
+    }
+
     private void createAdapter(){
-        // Make sure this fragment is still a part of the activity.
         if(getActivity()==null) return;
         adapter=new ArrayAdapter<Post>(getActivity() ,R.layout.post_item, posts){
             @Override
@@ -79,5 +87,21 @@ public class Ruby_on_Rails_JSON_Parser_Fragment extends Fragment {
 		}
     	
     }
+    
+    @Override
+	public void onRefresh() {
+    	posts.clear();
+    	new Thread(){
+            public void run(){
+                posts.addAll(postsHolder.fetchPosts());
+            }
+    	}.start();
+		new Handler().postDelayed(new Runnable() {
+	        @Override public void run() {
+	            swipeLayout.setRefreshing(false);
+	            adapter.notifyDataSetChanged();
+	        }
+	    }, 3000);
+	}
     
 }

@@ -30,6 +30,8 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,7 +57,7 @@ import com.nostra13.universalimageloader.sample.Constants;
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
  */
-public class ImageListFragment extends AbsListViewBaseFragment {
+public class ImageListFragment extends AbsListViewBaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
 	public static final int INDEX = 0;
 
@@ -66,6 +68,9 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 
 	DisplayImageOptions options;
 	ProgressDialog mProgressDialog;
+	
+	SwipeRefreshLayout swipeLayout;
+	ImageAdapter adapter;
 	
 	/*
 	 * Adding to make it work with Groupon
@@ -104,9 +109,11 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fr_image_list, container, false);
-		listView = (ListView) rootView.findViewById(android.R.id.list);
-		((ListView) listView).setAdapter(new ImageAdapter());
+		View rootView = inflater.inflate(R.layout.swipe_refresh_layout, container, false);
+        setSwipeLayout(rootView);
+        listView = (ListView) rootView.findViewById(R.id.listview1);
+        adapter = new ImageAdapter();
+		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -115,6 +122,15 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 		});
 		return rootView;
 	}
+	
+	public void setSwipeLayout(View rootView) {
+    	swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+		swipeLayout.setOnRefreshListener(this);
+		swipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright, 
+	            android.R.color.holo_green_light, 
+	            android.R.color.holo_orange_light, 
+	            android.R.color.holo_red_light);
+    }
 
 	@Override
 	public void onDestroy() {
@@ -225,4 +241,17 @@ public class ImageListFragment extends AbsListViewBaseFragment {
 			}
 		}
     }
+	
+	@Override
+	public void onRefresh() {
+		if (list != null) {
+			holder.text.setText(list.get(r.nextInt(list.size())));
+		}
+		new Handler().postDelayed(new Runnable() {
+	        @Override public void run() {
+	            swipeLayout.setRefreshing(false);
+	            adapter.notifyDataSetChanged();
+	        }
+	    }, 2000);
+	}
 }
