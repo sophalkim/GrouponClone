@@ -38,6 +38,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -57,7 +58,7 @@ import com.nostra13.universalimageloader.sample.Constants;
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
  */
-public class ImageListFragment extends AbsListViewBaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class ImageListFragment extends AbsListViewBaseFragment implements SwipeRefreshLayout.OnRefreshListener, ListView.OnScrollListener{
 
 	public static final int INDEX = 0;
 
@@ -71,6 +72,13 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 	
 	SwipeRefreshLayout swipeLayout;
 	ImageAdapter adapter;
+	
+	
+	// Variables for automatically loading more reddit posts when user reaches bottom of listview
+    int currentItemIndex = 0;
+    int totalItemCount = 0;
+    int currentScrollState = 0;
+    boolean isLoading = false;
 	
 	/*
 	 * Adding to make it work with Groupon
@@ -113,6 +121,7 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
         setSwipeLayout(rootView);
         new JsonLoader().execute("https://sophalkim.herokuapp.com/users.json");
         listView = (ListView) rootView.findViewById(R.id.listview1);
+        listView.setOnScrollListener(this);
         adapter = new ImageAdapter();
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
@@ -156,7 +165,11 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 
 		@Override
 		public int getCount() {
-			return imageUrls.length;
+			if (list == null) {
+				return 5;
+			} else {
+				return list.size() / 2;
+			}
 		}
 
 		@Override
@@ -215,6 +228,7 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
+			swipeLayout.setRefreshing(true);
 		}
 		
 		@Override
@@ -239,6 +253,7 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 		protected void onPostExecute(List<String> results) {
 			list = results;
 			adapter.notifyDataSetChanged();
+			swipeLayout.setRefreshing(false);
 		}
     }
 	
@@ -254,4 +269,36 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 	        }
 	    }, 2000);
 	}
+
+	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        currentItemIndex = firstVisibleItem + visibleItemCount;
+        this.totalItemCount = totalItemCount;
+        Log.i("totalItemCoutn:", "" + totalItemCount);
+    }
+
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+        this.currentScrollState = scrollState;
+        this.isScrollCompleted();
+     }
+
+    private void isScrollCompleted() {
+        if (currentItemIndex == totalItemCount && this.currentScrollState == SCROLL_STATE_IDLE) {
+            if(!isLoading){
+                 isLoading = true;
+                 new Thread(){
+                     public void run(){
+                         list.addAll(list);
+                         swipeLayout.setRefreshing(true);
+                     }
+             	}.start();
+         		new Handler().postDelayed(new Runnable() {
+         	        @Override public void run() {
+         	            swipeLayout.setRefreshing(false);
+         	            adapter.notifyDataSetChanged();
+         	            isLoading = false;
+         	        }
+         	    }, 2000);
+            }
+        }
+    }
 }
