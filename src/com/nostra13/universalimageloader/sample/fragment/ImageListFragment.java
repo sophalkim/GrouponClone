@@ -111,6 +111,7 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.swipe_refresh_layout, container, false);
         setSwipeLayout(rootView);
+        new JsonLoader().execute("https://sophalkim.herokuapp.com/users.json");
         listView = (ListView) rootView.findViewById(R.id.listview1);
         adapter = new ImageAdapter();
 		listView.setAdapter(adapter);
@@ -181,7 +182,11 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 			} else {
 				holder = (ViewHolder) view.getTag();
 			}
-			new JsonLoader().execute("https://sophalkim.herokuapp.com/users.json");
+			if (list != null) {
+				holder.text.setText(list.get(r.nextInt(list.size())));
+			} else {
+				holder.text.setText("loading");
+			}
 			holder.button.setText("$" + r.nextInt(100) + ".95");
 			ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], holder.image, options, animateFirstListener);
 			return view;
@@ -210,14 +215,6 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			if (holder != null) {
-				if (list != null) {
-					holder.text.setText(list.get(r.nextInt(list.size())));
-				} else {
-					holder.text.setText("loading");
-				}
-				
-			}
 		}
 		
 		@Override
@@ -241,9 +238,7 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 		@Override
 		protected void onPostExecute(List<String> results) {
 			list = results;
-			if (results != null && holder != null) {
-				holder.text.setText(results.get(r.nextInt(results.size())));
-			}
+			adapter.notifyDataSetChanged();
 		}
     }
 	
