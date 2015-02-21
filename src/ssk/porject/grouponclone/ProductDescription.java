@@ -2,25 +2,28 @@ package ssk.porject.grouponclone;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class ProductDescription extends Activity {
 	LinearLayout linearLayout;
-	ImageView imageView;
-	ImageView imageView2;
+	ImageButton imageButton;
+	ImageButton imageButton2;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.product_description_layout);
 
-		imageView = new ImageView(this);
-		imageView2 = new ImageView(this);
-		imageView.setImageResource(R.drawable.cat_food);
-		imageView2.setImageResource(R.drawable.view_pager_background);
+		imageButton = new ImageButton(this);
+		imageButton2 = new ImageButton(this);
+		imageButton.setImageResource(R.drawable.cat_food);
+		imageButton2.setImageResource(R.drawable.view_pager_background);
+		imageButton.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+		imageButton2.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 		linearLayout = (LinearLayout) findViewById(R.id.gallery);
-		linearLayout.addView(imageView);
-		linearLayout.addView(imageView2);
+		linearLayout.addView(imageButton);
+		linearLayout.addView(imageButton2);
 	}
 }
