@@ -35,34 +35,35 @@ public final class R {
         public static final int view_pager_background=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f080017;
+        public static final int action_settings=0x7f080018;
         public static final int button1=0x7f08000a;
+        public static final int footer=0x7f080010;
         public static final int gallery=0x7f080004;
         public static final int grid=0x7f080005;
         public static final int image=0x7f080007;
-        public static final int image_left=0x7f080014;
-        public static final int image_right=0x7f080015;
+        public static final int image_left=0x7f080015;
+        public static final int image_right=0x7f080016;
         public static final int image_view=0x7f08000c;
         public static final int image_view_1=0x7f080003;
-        public static final int item_clear_disc_cache=0x7f080019;
-        public static final int item_clear_memory_cache=0x7f080018;
-        public static final int item_pause_on_fling=0x7f08001b;
-        public static final int item_pause_on_scroll=0x7f08001a;
+        public static final int item_clear_disc_cache=0x7f08001a;
+        public static final int item_clear_memory_cache=0x7f080019;
+        public static final int item_pause_on_fling=0x7f08001c;
+        public static final int item_pause_on_scroll=0x7f08001b;
         public static final int label=0x7f080002;
-        public static final int list_view_1=0x7f080013;
-        public static final int listview1=0x7f080012;
+        public static final int list_view_1=0x7f080014;
+        public static final int listview1=0x7f080013;
         public static final int loading=0x7f08000b;
         public static final int pager=0x7f080000;
         public static final int pager_title_strip=0x7f080001;
         public static final int post_score=0x7f08000e;
         public static final int post_title=0x7f08000d;
         public static final int progress=0x7f080008;
-        public static final int search=0x7f080016;
+        public static final int search=0x7f080017;
         public static final int section_label=0x7f080006;
-        public static final int swipe_container=0x7f080011;
+        public static final int swipe_container=0x7f080012;
         public static final int text=0x7f080009;
         public static final int textView1=0x7f08000f;
-        public static final int winlayoutid=0x7f080010;
+        public static final int winlayoutid=0x7f080011;
     }
     public static final class layout {
         public static final int ac_complex=0x7f030000;
