@@ -29,6 +29,7 @@
         <activity android:name="com.nostra13.universalimageloader.sample.activity.ComplexImageActivity"></activity>
         <activity android:name="com.nostra13.universalimageloader.sample.activity.HomeActivity"></activity>
         <activity android:name="com.nostra13.universalimageloader.sample.activity.SimpleImageActivity"></activity>
+        <activity android:name="ProductDescription"></activity>
         
         
     </application>

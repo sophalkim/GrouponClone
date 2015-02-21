@@ -24,9 +24,11 @@ import java.util.Random;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import ssk.porject.grouponclone.ProductDescription;
 import ssk.porject.grouponclone.R;
 import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.RemoteData;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,9 +38,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -190,6 +192,14 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 				holder.text = (TextView) view.findViewById(R.id.text);
 				holder.image = (ImageView) view.findViewById(R.id.image);
 				holder.button = (Button) view.findViewById(R.id.button1);
+				holder.button.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(getActivity(), ProductDescription.class);
+						startActivity(intent);
+					}
+				});
 				view.setTag(holder);
 			} else {
 				holder = (ViewHolder) view.getTag();
