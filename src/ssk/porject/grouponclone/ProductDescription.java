@@ -82,9 +82,9 @@ public class ProductDescription extends Activity implements View.OnClickListener
 //		imageButton.setImageResource(R.drawable.cat_food);
 //		imageButton2.setImageResource(R.drawable.view_pager_background);
 //		imageButton3.setImageResource(R.drawable.jacket);
-		imageButton.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-		imageButton2.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-		imageButton3.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+		imageButton.setScaleType(ImageView.ScaleType.FIT_XY);
+		imageButton2.setScaleType(ImageView.ScaleType.FIT_XY);
+		imageButton3.setScaleType(ImageView.ScaleType.FIT_XY);
 		imageButton.setOnClickListener(this);
 		imageButton2.setOnClickListener(this);
 		imageButton3.setOnClickListener(this);
