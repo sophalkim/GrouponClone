@@ -9,10 +9,10 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -33,6 +33,7 @@ public class ProductDescription extends Activity implements View.OnClickListener
 	ImageLoadingListener animateFirstListener;
 	String[] imageUrls = Constants.IMAGES;
 	Random r = new Random();
+	Button productBuyButton;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		setContentView(R.layout.product_description_layout);
 		setImager();
 		setImageButtons();
+		setProductBuyButton();
 	}
 
 	@Override
@@ -93,6 +95,11 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		linearLayout.addView(imageButton);
 		linearLayout.addView(imageButton2);
 		linearLayout.addView(imageButton3);
+	}
+	
+	public void setProductBuyButton() {
+		productBuyButton = (Button) findViewById(R.id.product_buy_button);
+		productBuyButton.setOnClickListener(this);
 	}
 	
 	private static class AnimateFirstDisplayListener extends SimpleImageLoadingListener {
