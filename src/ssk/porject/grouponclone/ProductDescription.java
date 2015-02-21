@@ -2,6 +2,7 @@ package ssk.porject.grouponclone;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,8 +23,18 @@ public class ProductDescription extends Activity {
 		imageButton2.setImageResource(R.drawable.view_pager_background);
 		imageButton.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 		imageButton2.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+		imageButton2.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ProductImageFragment winDialog = new ProductImageFragment();
+		        winDialog.show(getFragmentManager(), null);
+			}
+		});
 		linearLayout = (LinearLayout) findViewById(R.id.gallery);
 		linearLayout.addView(imageButton);
 		linearLayout.addView(imageButton2);
+		
+		
 	}
 }
