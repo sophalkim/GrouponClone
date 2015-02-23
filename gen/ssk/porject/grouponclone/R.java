@@ -20,74 +20,93 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f040000;
         public static final int activity_vertical_margin=0x7f040001;
+        /** 
+         Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html
+    
+         */
+        public static final int navigation_drawer_width=0x7f040002;
     }
     public static final class drawable {
         public static final int cat_food=0x7f020000;
-        public static final int ic_empty=0x7f020001;
-        public static final int ic_error=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int ic_stub=0x7f020004;
-        public static final int icon_bell=0x7f020005;
-        public static final int icon_notification=0x7f020006;
-        public static final int icon_notification2=0x7f020007;
-        public static final int icon_search=0x7f020008;
-        public static final int jacket=0x7f020009;
-        public static final int view_pager_background=0x7f02000a;
+        public static final int ic_action_forward=0x7f020001;
+        public static final int ic_empty=0x7f020002;
+        public static final int ic_error=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int ic_stub=0x7f020005;
+        public static final int icon_bell=0x7f020006;
+        public static final int icon_notification=0x7f020007;
+        public static final int icon_notification2=0x7f020008;
+        public static final int icon_search=0x7f020009;
+        public static final int jacket=0x7f02000a;
+        public static final int view_pager_background=0x7f02000b;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001b;
-        public static final int button1=0x7f08000a;
-        public static final int footer=0x7f080012;
-        public static final int gallery=0x7f080004;
-        public static final int grid=0x7f080005;
-        public static final int image=0x7f080007;
-        public static final int image_left=0x7f080018;
-        public static final int image_right=0x7f080019;
-        public static final int image_view=0x7f08000c;
-        public static final int image_view_1=0x7f080003;
-        public static final int item_clear_disc_cache=0x7f08001d;
-        public static final int item_clear_memory_cache=0x7f08001c;
-        public static final int item_pause_on_fling=0x7f08001f;
-        public static final int item_pause_on_scroll=0x7f08001e;
-        public static final int label=0x7f080002;
-        public static final int list_view_1=0x7f080017;
-        public static final int listview1=0x7f080016;
-        public static final int loading=0x7f08000b;
+        public static final int action_settings=0x7f080026;
+        public static final int button1=0x7f080015;
+        public static final int buttonAddProduct=0x7f08000c;
+        public static final int editTextDescription=0x7f080008;
+        public static final int editTextName=0x7f080005;
+        public static final int editTextPrice=0x7f08000b;
+        public static final int footer=0x7f08001d;
+        public static final int gallery=0x7f08000f;
+        public static final int grid=0x7f080010;
+        public static final int image=0x7f080012;
+        public static final int image_left=0x7f080023;
+        public static final int image_right=0x7f080024;
+        public static final int image_view=0x7f080017;
+        public static final int image_view_1=0x7f08000e;
+        public static final int item_clear_disc_cache=0x7f080028;
+        public static final int item_clear_memory_cache=0x7f080027;
+        public static final int item_pause_on_fling=0x7f08002a;
+        public static final int item_pause_on_scroll=0x7f080029;
+        public static final int label=0x7f08000d;
+        public static final int linearLayoutDescription=0x7f080006;
+        public static final int linearLayoutName=0x7f080003;
+        public static final int linearLayoutPrice=0x7f080009;
+        public static final int list_view_1=0x7f080022;
+        public static final int listview1=0x7f080021;
+        public static final int loading=0x7f080016;
         public static final int pager=0x7f080000;
         public static final int pager_title_strip=0x7f080001;
-        public static final int post_score=0x7f08000e;
-        public static final int post_title=0x7f08000d;
-        public static final int product_buy_button=0x7f080013;
-        public static final int product_description_text_description=0x7f080010;
-        public static final int product_description_text_name=0x7f08000f;
-        public static final int product_info=0x7f080011;
-        public static final int progress=0x7f080008;
-        public static final int search=0x7f08001a;
-        public static final int section_label=0x7f080006;
-        public static final int swipe_container=0x7f080015;
-        public static final int text=0x7f080009;
-        public static final int winlayoutid=0x7f080014;
+        public static final int post_score=0x7f080019;
+        public static final int post_title=0x7f080018;
+        public static final int product_buy_button=0x7f08001e;
+        public static final int product_description_text_description=0x7f08001b;
+        public static final int product_description_text_name=0x7f08001a;
+        public static final int product_info=0x7f08001c;
+        public static final int progress=0x7f080013;
+        public static final int search=0x7f080025;
+        public static final int section_label=0x7f080011;
+        public static final int swipe_container=0x7f080020;
+        public static final int text=0x7f080014;
+        public static final int textViewDescription=0x7f080007;
+        public static final int textViewName=0x7f080004;
+        public static final int textViewPrice=0x7f08000a;
+        public static final int textViewTitle=0x7f080002;
+        public static final int winlayoutid=0x7f08001f;
     }
     public static final class layout {
         public static final int ac_complex=0x7f030000;
         public static final int ac_home=0x7f030001;
         public static final int activity_main=0x7f030002;
-        public static final int custom_row=0x7f030003;
-        public static final int fr_image_gallery=0x7f030004;
-        public static final int fr_image_grid=0x7f030005;
-        public static final int fr_image_list=0x7f030006;
-        public static final int fr_image_pager=0x7f030007;
-        public static final int fragment_main=0x7f030008;
-        public static final int item_gallery_image=0x7f030009;
-        public static final int item_grid_image=0x7f03000a;
-        public static final int item_list_image=0x7f03000b;
-        public static final int item_pager_image=0x7f03000c;
-        public static final int post_item=0x7f03000d;
-        public static final int product_description_layout=0x7f03000e;
-        public static final int product_image_layout=0x7f03000f;
-        public static final int swipe_refresh_layout=0x7f030010;
-        public static final int web_images_layout=0x7f030011;
-        public static final int widget=0x7f030012;
+        public static final int add_product_layout=0x7f030003;
+        public static final int custom_row=0x7f030004;
+        public static final int fr_image_gallery=0x7f030005;
+        public static final int fr_image_grid=0x7f030006;
+        public static final int fr_image_list=0x7f030007;
+        public static final int fr_image_pager=0x7f030008;
+        public static final int fragment_main=0x7f030009;
+        public static final int item_gallery_image=0x7f03000a;
+        public static final int item_grid_image=0x7f03000b;
+        public static final int item_list_image=0x7f03000c;
+        public static final int item_pager_image=0x7f03000d;
+        public static final int post_item=0x7f03000e;
+        public static final int product_description_layout=0x7f03000f;
+        public static final int product_image_layout=0x7f030010;
+        public static final int swipe_refresh_layout=0x7f030011;
+        public static final int web_images_layout=0x7f030012;
+        public static final int widget=0x7f030013;
     }
     public static final class menu {
         public static final int main=0x7f070000;

@@ -85,6 +85,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 		@Override
 		public Fragment getItem(int position) {
 			switch (position) {
+			case 1: return AddProductFragment.newInstance();
 //			case 2: return Ruby_on_Rails_JSON_Parser_Fragment.newInstance();
 			default: return ImageListFragment.newInstance();
 			}
@@ -99,20 +100,13 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
 			switch (position) {
-			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
-			case 1:
-				return getString(R.string.title_section2).toUpperCase(l);
-			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
-			case 3:
-				return getString(R.string.title_section4).toUpperCase(l);
-			case 4:
-				return getString(R.string.title_section5).toUpperCase(l);
-			case 5:
-				return getString(R.string.title_section6).toUpperCase(l);
-			case 6:
-				return getString(R.string.title_section7).toUpperCase(l);
+			case 0: return getString(R.string.title_section1).toUpperCase(l);
+			case 1: return getString(R.string.title_section2).toUpperCase(l);
+			case 2: return getString(R.string.title_section3).toUpperCase(l);
+			case 3: return getString(R.string.title_section4).toUpperCase(l);
+			case 4: return getString(R.string.title_section5).toUpperCase(l);
+			case 5: return getString(R.string.title_section6).toUpperCase(l);
+			case 6: return getString(R.string.title_section7).toUpperCase(l);
 			}
 			return null;
 		}
