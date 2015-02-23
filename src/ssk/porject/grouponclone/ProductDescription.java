@@ -1,18 +1,26 @@
 package ssk.porject.grouponclone;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.RemoteData;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -34,6 +42,8 @@ public class ProductDescription extends Activity implements View.OnClickListener
 	String[] imageUrls = Constants.IMAGES;
 	Random r = new Random();
 	Button productBuyButton;
+	TextView productDescriptionText;
+	List<String> list;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,7 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		setImager();
 		setImageButtons();
 		setProductBuyButton();
+		setProductDescriptionText();
 	}
 
 	@Override
@@ -97,6 +108,12 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		productBuyButton.setOnClickListener(this);
 	}
 	
+	public void setProductDescriptionText() {
+		productDescriptionText = (TextView) findViewById(R.id.product_description_text);
+		productDescriptionText.setText("loading");
+		new JsonLoader().execute("https://groupon-api.herokuapp.com/products.json");
+	}
+	
 	private static class AnimateFirstDisplayListener extends SimpleImageLoadingListener {
 
 		static final List<String> displayedImages = Collections.synchronizedList(new LinkedList<String>());
@@ -113,4 +130,36 @@ public class ProductDescription extends Activity implements View.OnClickListener
 			}
 		}
 	}
+	
+	private class JsonLoader extends AsyncTask<String, Integer, List<String>> {
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+		}
+		
+		@Override
+		protected List<String> doInBackground(String... params) {
+			String raw=RemoteData.readContents(params[0]);
+			List<String> list=new ArrayList<String>();
+	        try {
+	            	JSONArray data = new JSONArray(raw);
+	            for (int i=0; i < data.length(); i++){
+	                JSONObject cur= data.getJSONObject(i);
+	                String description = "";
+	                description =cur.optString("description");
+	                list.add(description);
+	            }
+	        }catch(Exception e){
+	            Log.e("fetchPosts()",e.toString());
+	        }
+	        return list;
+		}
+
+		@Override
+		protected void onPostExecute(List<String> results) {
+			list = results;
+			productDescriptionText.setText(list.get(0));
+		}
+    }
 }

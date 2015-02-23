@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.nostra13.universalimageloader.sample.activity;
 
+import ssk.porject.grouponclone.ImageListFragment;
 import ssk.porject.grouponclone.R;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -24,7 +25,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
 import com.nostra13.universalimageloader.sample.fragment.ImageGridFragment;
-import com.nostra13.universalimageloader.sample.fragment.ImageListFragment;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)

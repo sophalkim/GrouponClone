@@ -25,7 +25,7 @@
 	        </HorizontalScrollView>
 	
 	        <TextView
-	            android:id="@+id/textView1"
+	            android:id="@+id/product_description_text"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:text="@string/product_description" />
@@ -35,18 +35,6 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:src="@drawable/jacket"/>
-	        
-	        <TextView
-	            android:id="@+id/textView2"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/product_description" />
-	        
-	        <TextView
-	            android:id="@+id/textView3"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/product_description" />
 	
 	    </LinearLayout>  
 	

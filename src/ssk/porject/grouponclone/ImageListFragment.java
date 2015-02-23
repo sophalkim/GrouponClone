@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package com.nostra13.universalimageloader.sample.fragment;
+package ssk.porject.grouponclone;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,8 +24,6 @@ import java.util.Random;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import ssk.porject.grouponclone.ProductDescription;
-import ssk.porject.grouponclone.R;
 import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.RemoteData;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -56,6 +54,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.sample.Constants;
+import com.nostra13.universalimageloader.sample.fragment.AbsListViewBaseFragment;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
