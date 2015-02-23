@@ -23,11 +23,19 @@
 	        		android:orientation="horizontal">
 	            </LinearLayout>
 	        </HorizontalScrollView>
-	
+	        
 	        <TextView
-	            android:id="@+id/product_description_text"
+	            android:id="@+id/product_description_text_name"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:text="@string/product_description" />
+	
+	        <TextView
+	            android:id="@+id/product_description_text_description"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
 	            android:text="@string/product_description" />
 	        
 	        <ImageView 

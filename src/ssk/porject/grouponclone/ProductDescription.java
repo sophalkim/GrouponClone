@@ -1,7 +1,7 @@
 package ssk.porject.grouponclone;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -42,8 +42,11 @@ public class ProductDescription extends Activity implements View.OnClickListener
 	String[] imageUrls = Constants.IMAGES;
 	Random r = new Random();
 	Button productBuyButton;
-	TextView productDescriptionText;
-	List<String> list;
+	TextView productDescriptionTextName;
+	TextView productDescriptionTextDescription;
+	List<String> listName;
+	List<String> listDescription;
+	HashMap<String, String> productInformation;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -78,7 +81,6 @@ public class ProductDescription extends Activity implements View.OnClickListener
 				.cacheInMemory(true)
 				.cacheOnDisk(true)
 				.considerExifParams(true)
-//				.displayer(new RoundedBitmapDisplayer(20))
 				.build();
 		
 		animateFirstListener = new AnimateFirstDisplayListener();
@@ -109,8 +111,10 @@ public class ProductDescription extends Activity implements View.OnClickListener
 	}
 	
 	public void setProductDescriptionText() {
-		productDescriptionText = (TextView) findViewById(R.id.product_description_text);
-		productDescriptionText.setText("loading");
+		productDescriptionTextName = (TextView) findViewById(R.id.product_description_text_name);
+		productDescriptionTextName.setText("loading");
+		productDescriptionTextDescription = (TextView) findViewById(R.id.product_description_text_description);
+		productDescriptionTextDescription.setText("loading");
 		new JsonLoader().execute("https://groupon-api.herokuapp.com/products.json");
 	}
 	
@@ -131,7 +135,7 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		}
 	}
 	
-	private class JsonLoader extends AsyncTask<String, Integer, List<String>> {
+	private class JsonLoader extends AsyncTask<String, Integer, HashMap<String, String>> {
 
 		@Override
 		protected void onPreExecute() {
@@ -139,27 +143,31 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		}
 		
 		@Override
-		protected List<String> doInBackground(String... params) {
+		protected HashMap<String, String> doInBackground(String... params) {
 			String raw=RemoteData.readContents(params[0]);
-			List<String> list=new ArrayList<String>();
+			HashMap<String, String> map = new HashMap<String, String>();
 	        try {
 	            	JSONArray data = new JSONArray(raw);
 	            for (int i=0; i < data.length(); i++){
 	                JSONObject cur= data.getJSONObject(i);
+	                String name = "";
+	                name = cur.optString("name");
 	                String description = "";
 	                description =cur.optString("description");
-	                list.add(description);
+	                map.put("name", name);
+	                map.put("description", description);
 	            }
 	        }catch(Exception e){
 	            Log.e("fetchPosts()",e.toString());
 	        }
-	        return list;
+	        return map;
 		}
 
 		@Override
-		protected void onPostExecute(List<String> results) {
-			list = results;
-			productDescriptionText.setText(list.get(r.nextInt(list.size())));
+		protected void onPostExecute(HashMap<String, String> map) {
+			productInformation = map;
+			productDescriptionTextName.setText(map.get("name"));
+			productDescriptionTextDescription.setText(map.get("description"));
 		}
     }
 }
