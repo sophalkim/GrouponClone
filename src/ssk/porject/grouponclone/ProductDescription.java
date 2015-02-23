@@ -57,9 +57,7 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		.diskCacheFileNameGenerator(new Md5FileNameGenerator())
 		.diskCacheSize(50 * 1024 * 1024) // 50 Mb
 		.tasksProcessingOrder(QueueProcessingType.LIFO)
-		.writeDebugLogs() // Remove for release app
 		.build();
-		// Initialize ImageLoader with configuration.
 		ImageLoader.getInstance().init(config);
 
 		options = new DisplayImageOptions.Builder()
@@ -82,9 +80,6 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], imageButton, options, animateFirstListener);
 		ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], imageButton2, options, animateFirstListener);
 		ImageLoader.getInstance().displayImage(imageUrls[r.nextInt(imageUrls.length - 1)], imageButton3, options, animateFirstListener);
-//		imageButton.setImageResource(R.drawable.cat_food);
-//		imageButton2.setImageResource(R.drawable.view_pager_background);
-//		imageButton3.setImageResource(R.drawable.jacket);
 		imageButton.setScaleType(ImageView.ScaleType.FIT_XY);
 		imageButton2.setScaleType(ImageView.ScaleType.FIT_XY);
 		imageButton3.setScaleType(ImageView.ScaleType.FIT_XY);
