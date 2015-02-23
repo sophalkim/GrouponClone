@@ -159,7 +159,7 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		@Override
 		protected void onPostExecute(List<String> results) {
 			list = results;
-			productDescriptionText.setText(list.get(0));
+			productDescriptionText.setText(list.get(r.nextInt(list.size())));
 		}
     }
 }
