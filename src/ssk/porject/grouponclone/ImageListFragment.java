@@ -283,7 +283,6 @@ public class ImageListFragment extends AbsListViewBaseFragment implements SwipeR
 	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         currentItemIndex = firstVisibleItem + visibleItemCount;
         this.totalItemCount = totalItemCount;
-        Log.i("totalItemCoutn:", "" + totalItemCount);
     }
 
     public void onScrollStateChanged(AbsListView view, int scrollState) {

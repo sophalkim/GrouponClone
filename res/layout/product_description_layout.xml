@@ -29,7 +29,9 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_margin="10dp"
-	            android:text="@string/product_description" />
+	            android:text="Name"
+	            android:textSize="20sp"
+	            android:textStyle="bold" />
 	
 	        <TextView
 	            android:id="@+id/product_description_text_description"

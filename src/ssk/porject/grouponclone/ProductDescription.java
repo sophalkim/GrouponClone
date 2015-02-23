@@ -44,9 +44,7 @@ public class ProductDescription extends Activity implements View.OnClickListener
 	Button productBuyButton;
 	TextView productDescriptionTextName;
 	TextView productDescriptionTextDescription;
-	List<String> listName;
-	List<String> listDescription;
-	HashMap<String, String> productInformation;
+	HashMap<Integer, HashMap<String, String>> productInformation;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -135,7 +133,7 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		}
 	}
 	
-	private class JsonLoader extends AsyncTask<String, Integer, HashMap<String, String>> {
+	private class JsonLoader extends AsyncTask<String, Integer, HashMap<Integer, HashMap<String, String>>> {
 
 		@Override
 		protected void onPreExecute() {
@@ -143,9 +141,9 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		}
 		
 		@Override
-		protected HashMap<String, String> doInBackground(String... params) {
+		protected HashMap<Integer, HashMap<String, String>> doInBackground(String... params) {
 			String raw=RemoteData.readContents(params[0]);
-			HashMap<String, String> map = new HashMap<String, String>();
+			HashMap<Integer, HashMap<String, String>> map = new HashMap<Integer, HashMap<String, String>>();
 	        try {
 	            	JSONArray data = new JSONArray(raw);
 	            for (int i=0; i < data.length(); i++){
@@ -154,8 +152,10 @@ public class ProductDescription extends Activity implements View.OnClickListener
 	                name = cur.optString("name");
 	                String description = "";
 	                description =cur.optString("description");
-	                map.put("name", name);
-	                map.put("description", description);
+	                HashMap<String, String> info = new HashMap<String, String>();
+	                info.put("name", name);
+	                info.put("description", description);
+	                map.put(i, info);
 	            }
 	        }catch(Exception e){
 	            Log.e("fetchPosts()",e.toString());
@@ -164,10 +164,10 @@ public class ProductDescription extends Activity implements View.OnClickListener
 		}
 
 		@Override
-		protected void onPostExecute(HashMap<String, String> map) {
+		protected void onPostExecute(HashMap<Integer, HashMap<String, String>> map) {
 			productInformation = map;
-			productDescriptionTextName.setText(map.get("name"));
-			productDescriptionTextDescription.setText(map.get("description"));
+			productDescriptionTextName.setText(productInformation.get(r.nextInt(productInformation.size())).get("name"));
+			productDescriptionTextDescription.setText(productInformation.get(r.nextInt(productInformation.size())).get("description"));
 		}
     }
 }
