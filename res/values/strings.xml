@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">GrouponClone</string>
+    <string name="app_label">GrouponClone</string>
     <string name="title_section1">NEARBY</string>
     <string name="title_section2">FEATURED</string>
     <string name="title_section3">GOODS</string>
@@ -34,46 +35,7 @@
 
     <!-- Content descriptions -->
     <string name="descr_image">Image</string>
-    <string name="product_description">About this item
-The Dell Refurbished Laptop PC E5420 has everything you need to compute on the go. Microsoft Windows 7 Professional lets you complete any task.
-
-Dell Refurbished 14" E5420 Laptop PC:
-Key Features and Benefits:
-Intel Core i5 processor
-2.50GHz
-4GB DDR2 SDRAM system memory
-The laptop with Intel core i5 processor 4GB memory gives you the power to handle most power-hungry applications and tons of multimedia work
-128GB SSD hard drive
-Store 85,000 photos, 36,000 songs or 67 hours of HD video and more
-DVD-RW drive
-Watch movies and read and write CDs and DVDs in multiple formats on this Dell 14" laptop
-10/100/1000Mbps Gigabit Ethernet, 802.11b Wireless LAN
-Connect to a broadband modem with wired Ethernet or wirelessly connect to a WiFi signal or hotspot with the 802.11b connection built into your PC
-14" WXGA HD display
-The Dell 14" laptop has integrated Intel GMA 4500M HD Graphics
-
-Dell Refurbished Laptop PC E5420 Additional Features:
-The laptop with Intel core i5 processor 4GB memory has 4 x USB 2.0 ports, 1 x FireWire (1394) port, 1 x audio-out jack, 1 x microphone jack, 1 x RJ-45 Ethernet port, 1 x VGA port
-Standard lithium-ion battery
-1 HDMI Port
-4.5 lbs, 13.8" x 9.5" x 1.3"
-
-Software:
-Windows 7 Professional 64-Bit Edition (To learn more about the features of Windows 7, click here)
-Backup and Restore options built into Windows allow you to create safety copies of your most important personal files, so you're always prepared for the worst
-
-Dell Refurbished Laptop PC E5420 Support and Warranty:
-Refurbished items have a 1-year parts and labor limited warranty
-Recovery partition on Hard Drive
-
-What's In The Box:
-Power cord and AC adapter
-Standard lithium-ion battery
-Quick Start Guide
-
-To see the manufacturer's specifications for this product, click here.
-To see a list of our PC Accessories, click here.
-Trade in your used computer and electronics for more cash to spend at Walmart. Good for your wallet and the environment - click here.</string>
+    <string name="search_hint">Type in product name or category</string>
     <string name="title_activity_search">SearchActivity</string>
 
 </resources>
