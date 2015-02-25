@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -56,6 +57,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
+		}
+		if (id == R.id.search) {
+			Intent searchIntent = new Intent(this, SearchActivity.class);
+			startActivity(searchIntent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

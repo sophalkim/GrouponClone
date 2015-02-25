@@ -1,12 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="ssk.porject.grouponclone.MainActivity" >
+    tools:context="ssk.porject.grouponclone.SearchActivity" >
 
-    <item android:id="@+id/search"
-          android:title="@string/search_title"
-          android:icon="@drawable/icon_search"
-          android:showAsAction="collapseActionView|ifRoom"/>
-    
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

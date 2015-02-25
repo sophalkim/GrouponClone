@@ -104,13 +104,15 @@ public final class R {
         public static final int post_item=0x7f03000e;
         public static final int product_description_layout=0x7f03000f;
         public static final int product_image_layout=0x7f030010;
-        public static final int swipe_refresh_layout=0x7f030011;
-        public static final int web_images_layout=0x7f030012;
-        public static final int widget=0x7f030013;
+        public static final int search_layout=0x7f030011;
+        public static final int swipe_refresh_layout=0x7f030012;
+        public static final int web_images_layout=0x7f030013;
+        public static final int widget=0x7f030014;
     }
     public static final class menu {
         public static final int main=0x7f070000;
         public static final int main_menu=0x7f070001;
+        public static final int search=0x7f070002;
     }
     public static final class string {
         public static final int ac_name_complex=0x7f050010;
@@ -139,6 +141,7 @@ public final class R {
         public static final int notification_title=0x7f05000b;
         public static final int product_description=0x7f05001e;
         public static final int search_title=0x7f05000a;
+        public static final int title_activity_search=0x7f05001f;
         public static final int title_grid=0x7f050018;
         public static final int title_list=0x7f050017;
         public static final int title_section1=0x7f050001;
