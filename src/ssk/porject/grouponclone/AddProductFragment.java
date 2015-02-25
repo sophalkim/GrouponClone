@@ -1,11 +1,20 @@
 package ssk.porject.grouponclone;
 
-import java.util.List;
+import java.io.IOException;
 
-import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.Post;
+import org.apache.http.client.HttpResponseException;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,19 +50,57 @@ public class AddProductFragment extends Fragment implements View.OnClickListener
 		String name = editTextName.getText().toString();
 		String description = editTextDescription.getText().toString();
 		String price = editTextPrice.getText().toString();
-		new AddProductTask().execute(name, description, price);
+		String url = "http://groupon-api.herokuapp.com/products.json";
+		new AddProductTask().execute(name, description, price, url);
 	}
 	
 	public class AddProductTask extends AsyncTask<String, Void, String> {
     	
 		@Override
 		protected String doInBackground(String... params) {
-			return "success";
+			DefaultHttpClient client = new DefaultHttpClient();
+			HttpPost post = new HttpPost(params[3]);
+			JSONObject holder = new JSONObject();
+			JSONObject product = new JSONObject();
+			String response = null;
+//			JSONObject json = new JSONObject();
+			try {
+				try {
+//					json.put("success", false);
+//					json.put("info", "Something went wrong. Retry!");
+					product.put("name", params[0]);
+					product.put("description", params[1]);
+					product.put("price", params[2]);
+					holder.put("product", product);
+					StringEntity entity = new StringEntity(holder.toString());
+					post.setEntity(entity);
+					post.setHeader("Accept", "application/json");
+					post.setHeader("Content-Type", "application/json");
+					ResponseHandler<String> responseHandler = new BasicResponseHandler();
+					response = client.execute(post, responseHandler);
+					Log.i("response", response);
+//					json = new JSONObject(response);
+				} catch (HttpResponseException e) {
+					e.printStackTrace();
+					Log.e("ClientProtocol", "" + e);
+				} catch (IOException e) {
+					e.printStackTrace();
+					Log.e("IO", "" + e);
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+				Log.e("JSON", "" + e);
+			}
+			return response;
 		}
 		
 		@Override
-		protected void onPostExecute(String result) {
-			Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
+		protected void onPostExecute(String response) {
+			if (response.contains("created_at")) {
+				Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+			}
 		}
     	
     }
