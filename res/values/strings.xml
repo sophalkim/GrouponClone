@@ -37,5 +37,6 @@
     <string name="descr_image">Image</string>
     <string name="search_hint">Type in product name or category</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_search_activity2">SearchActivity2</string>
 
 </resources>

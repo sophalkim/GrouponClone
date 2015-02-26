@@ -40,10 +40,16 @@
             android:label="@string/title_activity_search"
             android:launchMode="singleTop" >
             <intent-filter>
-            	<action android:name="android.intent.action.SEARCH" />
-        	</intent-filter>
-        	<meta-data android:name="android.app.searchable"
-                   android:resource="@xml/searchable"/>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".SearchActivity2"
+            android:label="@string/title_activity_search_activity2" >
         </activity>
     </application>
 

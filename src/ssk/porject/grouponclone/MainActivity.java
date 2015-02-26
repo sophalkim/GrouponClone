@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 			return true;
 		}
 		if (id == R.id.search) {
-			Intent searchIntent = new Intent(this, SearchActivity.class);
+			Intent searchIntent = new Intent(this, SearchActivity2.class);
 			startActivity(searchIntent);
 		}
 		return super.onOptionsItemSelected(item);

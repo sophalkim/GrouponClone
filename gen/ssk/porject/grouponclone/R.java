@@ -42,7 +42,7 @@ public final class R {
         public static final int view_pager_background=0x7f02000b;
     }
     public static final class id {
-        public static final int action_settings=0x7f090027;
+        public static final int action_settings=0x7f09002a;
         public static final int button1=0x7f090015;
         public static final int buttonAddProduct=0x7f09000c;
         public static final int editTextDescription=0x7f090008;
@@ -52,23 +52,23 @@ public final class R {
         public static final int gallery=0x7f09000f;
         public static final int grid=0x7f090010;
         public static final int image=0x7f090012;
-        public static final int image_left=0x7f090024;
-        public static final int image_right=0x7f090025;
+        public static final int image_left=0x7f090027;
+        public static final int image_right=0x7f090028;
         public static final int image_view=0x7f090017;
         public static final int image_view_1=0x7f09000e;
-        public static final int item_clear_disc_cache=0x7f090029;
-        public static final int item_clear_memory_cache=0x7f090028;
-        public static final int item_pause_on_fling=0x7f09002b;
-        public static final int item_pause_on_scroll=0x7f09002a;
+        public static final int item_clear_disc_cache=0x7f09002c;
+        public static final int item_clear_memory_cache=0x7f09002b;
+        public static final int item_pause_on_fling=0x7f09002e;
+        public static final int item_pause_on_scroll=0x7f09002d;
         public static final int label=0x7f09000d;
         public static final int linearLayoutDescription=0x7f090006;
         public static final int linearLayoutName=0x7f090003;
         public static final int linearLayoutPrice=0x7f090009;
         public static final int listViewSearch=0x7f090020;
-        public static final int list_view_1=0x7f090023;
-        public static final int listview1=0x7f090022;
+        public static final int list_view_1=0x7f090026;
+        public static final int listview1=0x7f090025;
         public static final int loading=0x7f090016;
-        public static final int menu_search=0x7f09002c;
+        public static final int menu_search=0x7f09002f;
         public static final int pager=0x7f090000;
         public static final int pager_title_strip=0x7f090001;
         public static final int post_score=0x7f090019;
@@ -77,10 +77,13 @@ public final class R {
         public static final int product_description_text_description=0x7f09001b;
         public static final int product_description_text_name=0x7f09001a;
         public static final int product_info=0x7f09001c;
+        public static final int product_name=0x7f090023;
         public static final int progress=0x7f090013;
-        public static final int search=0x7f090026;
+        public static final int search=0x7f090029;
+        public static final int searchEditText=0x7f090021;
+        public static final int searchListView=0x7f090022;
         public static final int section_label=0x7f090011;
-        public static final int swipe_container=0x7f090021;
+        public static final int swipe_container=0x7f090024;
         public static final int text=0x7f090014;
         public static final int textViewDescription=0x7f090007;
         public static final int textViewName=0x7f090004;
@@ -107,14 +110,17 @@ public final class R {
         public static final int product_description_layout=0x7f03000f;
         public static final int product_image_layout=0x7f030010;
         public static final int search_activity_layout=0x7f030011;
-        public static final int swipe_refresh_layout=0x7f030012;
-        public static final int web_images_layout=0x7f030013;
-        public static final int widget=0x7f030014;
+        public static final int search_activity_layout2=0x7f030012;
+        public static final int search_list_item=0x7f030013;
+        public static final int swipe_refresh_layout=0x7f030014;
+        public static final int web_images_layout=0x7f030015;
+        public static final int widget=0x7f030016;
     }
     public static final class menu {
         public static final int main=0x7f080000;
         public static final int main_menu=0x7f080001;
         public static final int search=0x7f080002;
+        public static final int search_activity2=0x7f080003;
     }
     public static final class string {
         public static final int ac_name_complex=0x7f060011;
@@ -145,6 +151,7 @@ public final class R {
         public static final int search_hint=0x7f06001f;
         public static final int search_title=0x7f06000b;
         public static final int title_activity_search=0x7f060020;
+        public static final int title_activity_search_activity2=0x7f060021;
         public static final int title_grid=0x7f060019;
         public static final int title_list=0x7f060018;
         public static final int title_section1=0x7f060002;
