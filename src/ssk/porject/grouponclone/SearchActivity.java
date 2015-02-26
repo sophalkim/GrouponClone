@@ -14,7 +14,7 @@ public class SearchActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.search_activity__layout);
+		setContentView(R.layout.search_activity_layout);
 	}
 
 	@Override
@@ -33,7 +33,10 @@ public class SearchActivity extends Activity {
 	    SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
 	    // Assumes current activity is the searchable activity
 	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-	    searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+	    searchView.setFocusable(true);
+	    searchView.setIconifiedByDefault(false);
+	    searchView.setIconified(false);
+	    searchView.requestFocus();
 		return true;
 	}
 
