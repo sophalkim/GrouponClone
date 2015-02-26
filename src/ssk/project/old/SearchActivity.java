@@ -1,10 +1,11 @@
-package ssk.porject.grouponclone;
+package ssk.project.old;
 
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import ssk.porject.grouponclone.R;
 import ssk.project.efi_demo_app.ruby_on_rails_json_parser_fragment.RemoteData;
 import android.app.Activity;
 import android.app.SearchManager;
